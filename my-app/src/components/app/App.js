@@ -5,6 +5,7 @@ import './App.css';
 import HomeContainer from "../../views/home/homeContainer";
 import CategoryContainer from "../../views/category/categoryContainer";
 import GamesOver from "../../views/gamesover/gamesover";
+import Footer from '../footer/Footer';
 class App extends Component {
   render() {
     return (
@@ -16,9 +17,7 @@ class App extends Component {
                 <Route path="/GamesOver" component={GamesOver} />
             </div>
           </Router>
-        <footer>
-          je suis dans mon footer
-        </footer>
+          <Footer/>
       </div>
     );
   }

@@ -45,16 +45,11 @@ class CategoryContainer extends Component {
 
             try {
                 //if we don't get the categories id ==>categoryScore null
-                const {category} = this.state;
-                let {categoryScore} = this.state;
-
-                if (!categoryScore[category.id]) {
-                    categoryScore[category.id] = 0;
-                    this.setState({categoryScore})
+                if (!this.state.categoryScore[this.state.category.id]) {
+                    this.state.categoryScore[this.state.category.id] = 0;
                 }
                 //else  increment our categoryScore and store it in sessionStorage categoryScore
-                categoryScore[category.id]++;
-                this.setState({categoryScore})
+                this.state.categoryScore[this.state.category.id]++;
                 sessionStorage.setItem('categoryScore', JSON.stringify(this.state.categoryScore));
             } catch (e) {
 

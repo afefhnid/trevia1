@@ -1,12 +1,13 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
+import Loader from '../../components/Loader/Loader';
 import './home.css'
 
 const Home = ({categories, getCategoryScore, getFinalScore, isLoading, winner, rest, style,}) => (
 
     <section style={{visibility: sessionStorage.getItem('style')}}>
-        <button onClick={rest} className={'third'} style={{backgroundColor: "#00bfff",float: 'right'}}>Rest le Score</button>
+        <button onClick={rest} className={'third'} style={{backgroundColor: "#00bfff",float: 'right'}}>Reset le Score</button>
         <h1 >Homepage</h1>
 
         <div>{winner()}</div>
@@ -43,7 +44,7 @@ const Home = ({categories, getCategoryScore, getFinalScore, isLoading, winner, r
                     </tbody>
                 </table>
             </div>
-            : <div>Je load</div>
+            : <Loader/>
         }
 
     </section>

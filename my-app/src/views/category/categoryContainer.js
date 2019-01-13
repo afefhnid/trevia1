@@ -1,8 +1,7 @@
 import React, {Component, createRef} from 'react';
 import api from '../../helpers/api';
 import Category from './category';
-import Home from "../home/home";
-
+import Loader from '../../components/Loader/Loader';
 class CategoryContainer extends Component {
     state = {
         category: null,
@@ -46,11 +45,16 @@ class CategoryContainer extends Component {
 
             try {
                 //if we don't get the categories id ==>categoryScore null
-                if (!this.state.categoryScore[this.state.category.id]) {
-                    this.state.categoryScore[this.state.category.id] = 0;
+                const {category} = this.state;
+                let {categoryScore} = this.state;
+
+                if (!categoryScore[category.id]) {
+                    categoryScore[category.id] = 0;
+                    this.setState({categoryScore})
                 }
                 //else  increment our categoryScore and store it in sessionStorage categoryScore
-                this.state.categoryScore[this.state.category.id]++;
+                categoryScore[category.id]++;
+                this.setState({categoryScore})
                 sessionStorage.setItem('categoryScore', JSON.stringify(this.state.categoryScore));
             } catch (e) {
 
@@ -106,7 +110,7 @@ class CategoryContainer extends Component {
         const {category, currentQuestion} = this.state;
         // at first render, category will be null so we need to wait
         // before using data.
-        if (!category) return <div>is loading</div>;
+        if (!category) return <Loader/>;
         return (
             <Category
                 category={category}

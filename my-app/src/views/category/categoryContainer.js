@@ -1,8 +1,7 @@
 import React, {Component, createRef} from 'react';
 import api from '../../helpers/api';
 import Category from './category';
-import Home from "../home/home";
-
+import Loader from '../../components/Loader/Loader';
 class CategoryContainer extends Component {
     state = {
         category: null,
@@ -106,7 +105,7 @@ class CategoryContainer extends Component {
         const {category, currentQuestion} = this.state;
         // at first render, category will be null so we need to wait
         // before using data.
-        if (!category) return <div>is loading</div>;
+        if (!category) return <Loader/>;
         return (
             <Category
                 category={category}
